@@ -1,10 +1,11 @@
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+
+import { Open_Sans } from 'next/font/google'
 import { ClerkProvider } from '@clerk/nextjs'
 import { ThemeProvider } from '@/components/providers/theme-provider'
-
-const inter = Inter({ subsets: ['latin'] })
+import { cn } from '@/lib/utils'
+const font = Open_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,12 +19,17 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
-         <html lang="en">
-      <body className={inter.className}>
+         <html lang="en" suppressHydrationWarning>
+      <body className={cn(
+
+        font.className,
+        "bg-pink-100  dark:bg-purple-900"
+
+      )}>
 
         <ThemeProvider
         attribute='class'
-        defaultTheme='dark'
+        defaultTheme='light'
         enableSystem={false}
         storageKey='collab-theme'>
         {children}
