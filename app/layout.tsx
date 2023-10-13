@@ -21,7 +21,11 @@ export default function RootLayout({
          <html lang="en">
       <body className={inter.className}>
 
-        <ThemeProvider>
+        <ThemeProvider
+        attribute='class'
+        defaultTheme='dark'
+        enableSystem={false}
+        storageKey='collab-theme'>
         {children}
         </ThemeProvider>
         
