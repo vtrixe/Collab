@@ -32,6 +32,7 @@ import { useRouter } from "next/navigation";
  import { zodResolver } from "@hookform/resolvers/zod"
 
 import { useForm } from "react-hook-form"
+import { FileUpload } from "../file-upload";
 
 const formSchema = z.object({
   
@@ -100,7 +101,22 @@ export const InitialModal = () =>{
 
                       <div className="flex items-center justify-center text-center">
                            
-                           Your Room needs a Billboard!
+                      <FormField
+                  control={form.control}
+                  name="imageUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <FileUpload
+                        endpoint="serverImage"
+                        value={field.value}
+                        onChange={field.onChange} />
+                      </FormControl>
+                    </FormItem>
+
+                          )}
+
+                          />
 
                       </div>
 
